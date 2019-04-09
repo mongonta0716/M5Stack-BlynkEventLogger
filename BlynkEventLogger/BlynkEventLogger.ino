@@ -70,7 +70,9 @@ String lastStr;
 void getTimeFromNTP(){
   
   configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
-  getLocalTime(&timeinfo);
+  while (!getLocalTime(&timeinfo)) {
+    delay(1000);
+  }
 
 }
 
